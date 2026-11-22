@@ -22,6 +22,14 @@ The store uses its **own database** (`harbouredge_store`). Do **not** point it a
 - Never run `php artisan bagisto:install` on a server with real data: it runs `db:wipe` and deletes every table in the database.
 - Use `php artisan harbouredge:install` instead. It never wipes anything, and it refuses to run if the database already contains another system's tables.
 
+## Quick start on Windows + XAMPP
+
+Double-click `setup-windows.bat` in the project folder (MySQL must be running in XAMPP).
+It uses XAMPP's PHP if it is 8.3+, otherwise downloads a separate PHP 8.3 into `C:\xampp\php83`
+(XAMPP's own PHP is not changed), installs everything into `harbouredge_store`, saves the admin login
+to `storage/app/admin-login.txt` and starts the store at http://localhost:8000.
+Run it again any time to start the store.
+
 ## Install (local or server)
 
 Requirements: PHP 8.3 (with `bcmath`, `intl`, `gd`, `zip`, `pdo_mysql`), Composer 2, MySQL 8 / MariaDB 10.6+.

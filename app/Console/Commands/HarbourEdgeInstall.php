@@ -42,7 +42,7 @@ class HarbourEdgeInstall extends Command
             return false;
         }
 
-        $tables = collect(Schema::getTableListing())->map(fn ($table) => Str::afterLast($table, '.'));
+        $tables = collect(Schema::getTableListing(DB::connection()->getDatabaseName(), false));
 
         return $tables->isNotEmpty() && ! $tables->contains('channels');
     }

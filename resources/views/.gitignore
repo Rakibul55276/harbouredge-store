@@ -1,2 +1,7 @@
 *
 !.gitignore
+!.gitignore
+!vendor/
+!vendor/**
+!harbouredge/
+!harbouredge/**

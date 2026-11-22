@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use Barryvdh\Debugbar\Facades\Debugbar;
 use Illuminate\Support\Facades\Artisan;
+use Illuminate\Support\Facades\Event;
 use Illuminate\Support\Facades\ParallelTesting;
 use Illuminate\Support\Facades\Request;
 use Illuminate\Support\ServiceProvider;
@@ -37,6 +38,10 @@ class AppServiceProvider extends ServiceProvider
     {
         ParallelTesting::setUpTestDatabase(function (string $database, int $token) {
             Artisan::call('db:seed');
+        });
+
+        Event::listen('bagisto.shop.products.view.buy_now.after', function ($viewRenderEventManager) {
+            $viewRenderEventManager->addTemplate('harbouredge.request-quote');
         });
     }
 }

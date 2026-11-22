@@ -37,7 +37,8 @@ generatedProductName.json
 /public/hot
 /public/storage
 /public/vendor
-/lang/vendor
+/lang/vendor/*
+!/lang/vendor/shop/
 skills-lock.json
 /storage/*.key
 /storage/dcc-data/

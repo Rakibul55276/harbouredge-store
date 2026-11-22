@@ -95,5 +95,12 @@ return [
     TaxServiceProvider::class,
     ThemeServiceProvider::class,
     UserServiceProvider::class,
-    Webkul\B2BSuite\Providers\B2BSuiteServiceProvider::class,
+
+    /*
+     * B2B Suite queries the store config while booting, so it is only loaded once the base store
+     * tables exist (storage/installed is written by harbouredge:install / bagisto:install).
+     */
+    ...(file_exists(dirname(__DIR__).'/storage/installed')
+        ? [Webkul\B2BSuite\Providers\B2BSuiteServiceProvider::class]
+        : []),
 ];
